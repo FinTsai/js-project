@@ -62,3 +62,39 @@ function removeElement(newArr) {
 removeElement(concept);
 console.log(concept);
 
+
+
+//Nested Arrays
+
+const numberClusters = [[1, 2], [3, 4], [5, 6]];
+const target = numberClusters[2][1];
+
+console.log(target);
+
+
+
+
+const shoppinLists = ['milk', 'meats', ['Veg', 'Mango'], 'fruits'];
+
+//Use the .length property to find the last element of an array.
+const lastElement = shoppinLists[shoppinLists.length - 1];
+console.log(lastElement);
+
+//Use the other methods in MDN documentation not mentioned in the lesson.
+console.log(shoppinLists.join());
+//Take all the elements in an array and make a string.
+console.log(shoppinLists.join(', '));
+
+//Find the return value of calling .push() on an array.
+console.log(shoppinLists.push());
+
+//Nest an array within an array.
+const pick = shoppinLists[2][1];
+console.log(pick);
+
+
+
+
+
+
+
