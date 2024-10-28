@@ -9,7 +9,7 @@ condiments = ['Mayo'];
 console.log(condiments);
 
 utensils[3] = 'Spoon';
-console.log(utensils);
+console.log(utensils); //change the word
 
 
 
@@ -20,14 +20,14 @@ console.log(objectives.length);
 const chores = ['wash dishes', 'do laundry', 'take out trash'];
 
 chores.push('shopping', 'shower');
-console.log(chores);
+console.log(chores); //add 'shopping' and 'shower' the end of array
 
 
 const chores = ['wash dishes', 'do laundry', 'take out trash', 'cook dinner', 'mop floor'];
 
 const removed = chores.pop();
 console.log(chores);
-console.log(removed);
+console.log(removed); //removed last string
 
 
 const groceryList = ['orange juice', 'bananas', 'coffee beans', 'brown rice', 'pasta', 'coconut oil', 'plantains'];
