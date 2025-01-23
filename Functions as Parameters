@@ -1,0 +1,43 @@
+/*Functions as Parameters*/
+
+/*example
+
+const higherOrderFunc = param => {
+  param();
+  return `I just invoked ${param.name} as a callback function!`
+}
+ 
+const anotherFunc = () => {
+  return 'I\'m being invoked by the higher-order function!';
+}
+
+higherOrderFunc(anotherFunc);
+
+higherOrderFunc(() => {
+  for (let i = 0; i <= 10; i++){
+    console.log(i);
+  }
+});
+
+*/
+
+
+
+const addTwo = num => {
+  return num + 2;
+}
+
+const checkConsistentOutput = (func, val) => {
+  const checkA = val + 2;
+  const checkB = func(val);
+    if(checkA === checkB) {
+      return func(val) 
+      //if true, return the result of the callback function. 
+      //if the result of a function call is consistent. It adds 2 to val and compares it to the result of func(val). If they match, it returns the result of func(val); otherwise, it returns 'inconsistent results'.
+    } else {
+      return 'inconsistent results'
+    };
+};
+
+console.log(checkConsistentOutput(addTwo, 9));
+
