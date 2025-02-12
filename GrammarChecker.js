@@ -64,7 +64,10 @@ Some ideas for replacement words that can be used are: stunning, dazzling, or gl
 
 console.log(findWordMore10);
 
-
+storyWords = storyWords.filter(word => {
+  return word !== 'very';
+});
+//Removing the word “very”.
 
 console.log(storyWords.join(' '));
 
