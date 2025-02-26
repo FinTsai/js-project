@@ -73,40 +73,39 @@ class GameScene extends Phaser.Scene {
     }
     // Listener for clicks on cubes
     this.input.on("gameobjectdown", function (pointer, cube, event) {
-    
-  // Declare a constant, neighborCubes, below
-  const neighborCubes = getNeighbors(cube);
-  // Remove matching cubes from game if there's at least 2 of them
-  if (neighborCubes.length > 1) {
-    // Update score
-    score += neighborCubes.length;
-    scoreText.setText(`Score: ${score}`);
-    // Update each cube in neighborCubes here
-    neighborCubes.forEach((neighbor) => {
-      // Remove neighboring cube from display
-      neighbor.destroy();
-      // Shift remaining cubes down
-      renderCubes(neighbor);
+      // Declare a constant, neighborCubes, below
+      const neighborCubes = getNeighbors(cube);
+      // Remove matching cubes from game if there's at least 2 of them
+      if (neighborCubes.length > 1) {
+        // Update score
+        score += neighborCubes.length;
+        scoreText.setText(`Score: ${score}`);
+        // Update each cube in neighborCubes here
+        neighborCubes.forEach((neighbor) => {
+          // Remove neighboring cube from display
+          neighbor.destroy();
+          // Shift remaining cubes down
+          renderCubes(neighbor);
+        });
+
+        removeCols();
+      }
     });
 
-    removeCols();
+    // Helper function moves cube sprites down
+    function renderCubes(cube) {
+      for (let row = cube.row - 1; row >= 0; row--) {
+        // Move cube sprite down by cubeSize
+        board[cube.col][row].y += cubeSize;
+        // Update the row of the cube
+        board[cube.col][row].row += 1;
+      }
+      // Remove the cube from the board array
+      let removed = board[cube.col].splice(cube.row, 1);
+      // Add the removed cube to the top of the column
+      board[cube.col] = removed.concat(board[cube.col]);
+    }
   }
- });
-
-
-// Helper function moves cube sprites down
-function renderCubes(cube) {
-  for (let row = 0; row < cube.row; row++) {
-    // Move cube sprite down by 30px
-    board[cube.col][row].y += cubeSize;
-    // Update the row of cube
-    board[cube.col][row].row += 1;
-  }
-  // Update board array
-  let removed = board[cube.col].splice(cube.row, 1);
-  board[cube.col] = removed.concat(board[cube.col]);
-  }
-}
 
   update() {
     // If no more remaining valid moves, end game below
@@ -226,6 +225,14 @@ const getNeighbors = (cube) => {
     }
     // Add code to get matching cubes, below
   }
+
+  matches.forEach((match) => {
+      match.removed = true;
+      validNeighborCubes.push(match);
+      cubesToCheck.push(match);
+      //This code marks each matching cube as no longer playable and collects it in an array with any other matching cubes.
+    });
+
   // If not enough matching cubes, clear and reset the clicked cube
   if (validNeighborCubes.length === 1) {
     validNeighborCubes[0].removed = false;
@@ -233,13 +240,6 @@ const getNeighbors = (cube) => {
   }
 
   return validNeighborCubes;
-
-  matches.forEach((match) => {
-    match.removed = true;
-    validNeighborCubes.push(match);
-    cubesToCheck.push(match);
-    //This code marks each matching cube as no longer playable and collects it in an array with any other matching cubes.
-  });
 };
 
 // Helper function shifts removes empty columns
