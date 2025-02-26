@@ -89,6 +89,7 @@ class GameScene extends Phaser.Scene {
         });
 
         removeCols();
+         // Call removeCols without parameters
       }
     });
 
@@ -245,7 +246,23 @@ const getNeighbors = (cube) => {
 // Helper function shifts removes empty columns
 const removeCols = () => {
   // Declare a emptyCols here:
+    const emptyCols = board.map((col, i) => {
+    const isEmpty = col.every(cube => cube.removed 
+);
 
+if (isEmpty) {
+  return i;
+} else {
+  return false;
+  //return isEmpty ? i : false;
+};
+    });
+    .filter(i => i !== false);
+ //Use chaining to filter
+ // ensures that only numbers (column indices) are kept in the emptyCols array, effectively removing any false values.
+
+          // Logic to determine if the column is empty will go here
+  
   // For each empty column, shift all remaining columns to the left
   emptyCols.forEach((emptyCol) => {
     const columnsToMove = board.slice(emptyCol + 1);
