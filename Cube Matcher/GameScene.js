@@ -249,14 +249,13 @@ const removeCols = () => {
     const emptyCols = board.map((col, i) => {
     const isEmpty = col.every(cube => cube.removed 
 );
-
-if (isEmpty) {
-  return i;
-} else {
-  return false;
+        if (isEmpty) {
+          return i;
+        } else {
+          return false;
   //return isEmpty ? i : false;
-};
-    });
+      }
+    })  // Issue: This semicolon ; should not be here
     .filter(i => i !== false);
  //Use chaining to filter
  // ensures that only numbers (column indices) are kept in the emptyCols array, effectively removing any false values.
@@ -275,7 +274,10 @@ if (isEmpty) {
     });
   });
   // Remove all empty columns from the board array
-  board.splice(emptyCols[0], emptyCols.length);
+  if (emptyCols.length > 0) {
+   board.splice(emptyCols[0], emptyCols.length);
+   //splice used to change the contents of an array by removing, replacing, or adding elements. It directly modifies the original array and returns an array containing the removed elements.
+  }
 };
 
 // Helper function to check remaining moves
