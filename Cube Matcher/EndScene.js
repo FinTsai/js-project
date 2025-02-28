@@ -17,8 +17,16 @@ class EndScene extends Phaser.Scene {
       fontSize: '25px',
       fill: '#ff0000'
     });
+    
     // Sets the z-index: Put the text on top of the background and any other images
     scoreText.setDepth(1);
+
+    const highScoreText = this.add.text(150, 550, `High Score: ${highScore}`, {
+  fontSize: '30px',
+  fill: '#cf9191'
+});
+highScoreText.setDepth(1);
+
     // Transition to new game if player clicks
     this.input.on('pointerup', () => {
       this.scene.stop('EndScene');

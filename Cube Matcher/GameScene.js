@@ -2,6 +2,7 @@
 const cubeSize = 38;
 let board;
 let score = 0;
+let highScore = 0;
 
 class GameScene extends Phaser.Scene {
   constructor() {
@@ -159,6 +160,11 @@ class GameScene extends Phaser.Scene {
   }
 
   endGame() {
+    //update the high score if the current score is higher
+    if (score > highScore) {
+  highScore = score;
+}
+
     // Stop sprites moving
     this.physics.pause();
     // Transition to end scene w/fade
@@ -255,7 +261,7 @@ const removeCols = () => {
           return false;
   //return isEmpty ? i : false;
       }
-    })  // Issue: This semicolon ; should not be here
+    })
     .filter(i => i !== false);
  //Use chaining to filter
  // ensures that only numbers (column indices) are kept in the emptyCols array, effectively removing any false values.
