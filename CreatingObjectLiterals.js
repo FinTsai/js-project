@@ -48,3 +48,32 @@ let propName =  'Active Mission';
 let isActive = spaceship['Active Mission'];
 console.log(isActive);
 
+
+
+
+//Property Assignment
+let spaceship = {
+  'Fuel Type' : 'Turbo Fuel',
+  homePlanet : 'Earth',
+  color: 'silver',
+  'Secret Mission' : 'Discover life outside of Earth.'
+};
+
+// Write your code below
+spaceship.color = 'glorious gold';
+//Reassign the color property of the spaceship object to have a value of 'glorious gold'
+spaceship.numEngines = 8;
+//Without changing lines 1 - 6, add a numEngines property with a numeric value between 1 and 10 to the spaceship object.
+delete spaceship['Secret Mission'];
+
+console.log(spaceship);
+//print 
+/*Output-only Terminal
+Output:
+{ 'Fuel Type': 'Turbo Fuel',
+  homePlanet: 'Earth',
+  color: 'glorious gold',
+  numEngines: 8 }
+  */
+  
+
