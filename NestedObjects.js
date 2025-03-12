@@ -50,3 +50,34 @@ const firstPassenger = passengers[0];
 
 const firstPassengerName = passengers[0].name;
 // firstPassengerName is 'Alice'
+
+
+
+
+
+//Pass By Reference
+let spaceship = {
+  'Fuel Type' : 'Turbo Fuel',
+  homePlanet : 'Earth'
+};
+
+// Write your code below
+let greenEnergy = obj => {
+  obj['Fuel Type'] = 'avocado oil'
+};
+
+let remotelyDisable = obj => {
+  obj.disabled = true;
+};
+
+
+greenEnergy(spaceship);
+remotelyDisable(spaceship);
+Call your two functions with the spaceship object in the code editor, then console.log() the spaceship object to confirm those properties were changed/added.
+
+console.log(spaceship);//
+/*pint
+{ 'Fuel Type': 'avocado oil',
+  homePlanet: 'Earth',
+  disabled: true }
+  */
