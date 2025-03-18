@@ -64,3 +64,48 @@ console.log(newRobot.mobile)
 //print P-501 false
 
 
+
+
+
+
+//Destructured Assignment
+/*example
+
+const vampire = {
+  name: 'Dracula',
+  residence: 'Transylvania',
+  preferences: {
+    day: 'stay inside',
+    night: 'satisfy appetite'
+  }
+};
+
+const residence = vampire.residence; 
+console.log(residence); // Prints 'Transylvania' 
+
+//const { residence } = vampire; 
+console.log(residence); // Prints 'Transylvania'
+
+//const { day } = vampire.preferences; 
+console.log(day); // Prints 'stay inside'
+
+*/
+
+const robot = {
+  model: '1E78V2',
+  energyLevel: 100,
+  functionality: {
+    beep() {
+      console.log('Beep Boop');
+    },
+    fireLaser() {
+      console.log('Pew Pew');
+    },
+  }
+};
+
+const {functionality} = robot;
+functionality.beep();
+//this shortcut and call the .beep() method on functionality
+
+
