@@ -27,3 +27,40 @@ const robotFactory = (model, mobile) => {
 const tinCan = robotFactory('P-500', true);
 tinCan.beep();
 //print Beep Boop
+
+
+
+
+
+
+//Property Value Shorthand
+/*example
+
+const monsterFactory = (name, age) => {
+  return { 
+    name,
+    age 
+  }
+};
+//don’t have to repeat ourselves for property assignments!
+*/
+
+
+const robotFactory = (model, mobile) => {
+  return {
+    model,
+    mobile,
+    beep() {
+      console.log('Beep Boop');
+    }
+  }
+}
+
+// To check that the property value shorthand technique worked:
+const newRobot = robotFactory('P-501', false)
+console.log(newRobot.model)
+console.log(newRobot.mobile)
+
+//print P-501 false
+
+
