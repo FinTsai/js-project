@@ -54,7 +54,7 @@ const robot = {
   }
 };
 
-robot._energyLevel = 'high';
+robot.energyLevel = 'high';
 
 robot.recharge();
 //print Recharged! Energy is currently at high30%.
